@@ -1,0 +1,6 @@
+# this is the way to access tocketmaster data
+ticketmaster_data = requests.get("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey={}".format(YOUR_TICKETMASTER_API_KEY)).json()
+ticketmaster_data['_embedded']['events']
+
+# python version: 3.8.10
+# pip version: 21.1.1

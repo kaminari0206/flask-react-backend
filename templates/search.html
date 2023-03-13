@@ -1,0 +1,88 @@
+<!-- templates/search.html -->
+
+<head>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    main {
+      margin: 30px;
+    }
+
+    .side-by-side {
+      display: flex;
+      flex-direction: row;
+      margin: 30px;
+    }
+
+    .header {
+      display: flex;
+      width: 100%;
+      height: 80px;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #009879;
+    }
+
+    .header-title {
+      margin-left: 30px;
+      font-size: 33px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .header-back {
+      margin-right: 30px;
+      font-size: 20px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .input-search {
+      height: 40px;
+      padding: 0 0 0 10px;
+      border: 2px solid #008979;
+      border-radius: 10px 0 0 10px;
+      font-size: 20px;
+      color: #008979;
+    }
+
+    .input-search:hover {
+      border: 2px solid #008979;
+      outline: 0;
+    }
+
+    .input-search:active {
+      border: 2px solid #008979;
+      outline: 0;
+    }
+
+    .input-search:focus {
+      border: 2px solid #008979;
+      outline: 0;
+    }
+
+    .submit {
+      font-size: 20px;
+      height: 40px;
+      border: none;
+      border-radius: 0 10px 10px 0;
+      background-color: #009879;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="header-title">You can Search | Enter Keyword</h1>
+  </header>
+  <main>
+    <form action="/search">
+      <input type="text" name="query" class="input-search">
+      <input type="submit" value="Search" class="submit">
+    </form>
+  </main>
+</body>

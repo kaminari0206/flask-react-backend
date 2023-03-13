@@ -1,0 +1,186 @@
+<!-- templates/index.html -->
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+      }
+      .side-by-side {
+        display: flex;
+	      flex-direction: row;
+        margin: 30px;
+      }
+
+      
+      .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+      }
+
+      .styled-table thead tr {
+        color: #ffffff;
+        text-align: left;
+      }
+
+      .seatgeek thead tr {
+        background-color: #009879;
+      }
+
+      .ticketmaster thead tr {
+        background-color: #0ba7d6;
+      }
+
+      .stubhub thead tr {
+        background-color: #a9e20c;
+      }
+
+      .styled-table th,
+      .styled-table td {
+          padding: 12px 15px;
+      }
+
+      .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+
+      .styled-table tbody tr:last-of-type {
+        border-radius: 0 0 8px 8px;
+      }
+
+      .seatgeek tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+
+      .ticketmaster tbody tr:last-of-type {
+        border-bottom: 2px solid #0ba7d6;
+      }
+
+      .stubhub tbody tr:last-of-type {
+        border-bottom: 2px solid #a9e20c;
+      }
+
+      .styled-table tbody tr.active-row {
+        font-weight: bold;
+      }
+
+      .seatgeek tbody tr.active-row  {
+        color: #009879;
+      }
+
+      .ticketmaster tbody tr.active-row  {
+        color: #0ba7d6;
+      }
+
+      .stubhub tbody tr.active-row {
+        color: #a9e20c;
+      }
+
+      thead tr {
+        height: 80px;
+      }
+
+      tbody tr {
+        height: 80px;
+      }
+
+      .header {
+        display: flex;
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #009879;
+      }
+
+      .header-title {
+        margin-left: 30px;
+        font-size: 33px;
+        font-weight: 600;
+        color: white;
+      }
+
+      .header-back {
+        margin-right: 30px;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+      }
+
+      .seatgeek .link {
+        color: #009879;
+      }
+
+      .ticketmaster .link  {
+        color: #0ba7d6;
+      }
+
+      .stubhub .link {
+        color: #a9e20c;
+      }
+
+      .seatgeek .link:hover  {
+        color: #009879;
+      }
+
+      .ticketmaster .link:hover   {
+        color: #0ba7d6;
+      }
+
+      .stubhub .link:hover  {
+        color: #a9e20c;
+      }
+
+      .seatgeek .focus {
+        color: #009879;
+      }
+
+      .ticketmaster .focus  {
+        color: #0ba7d6;
+      }
+
+      .stubhub .focus {
+        color: #a9e20c;
+      }
+
+      .seatgeek .active {
+        color: #009879;
+      }
+
+      .ticketmaster .active  {
+        color: #0ba7d6;
+      }
+
+      .stubhub .active {
+        color: #a9e20c;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header-title">Search Results</h1>
+      <a class="header-back" href="/">back</a>
+    </header>
+    <main>
+      <div class="side-by-side">
+        {{template1|safe}}
+      </div>
+      <div class="side-by-side">
+        {{template2|safe}}
+      </div>
+      <div class="side-by-side">
+        {{template3|safe}}
+      </div>
+    </main>
+  </body>
+</html>
+
+

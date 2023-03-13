@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<html>
+  <head>
+    <style>
+      .side-by-side {
+        display: flex;
+      }
+      .table {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="side-by-side">
+      <table class="table">
+        <thead>
+          <tr>
+            {% for column in df1.columns %}
+              <th>{{ column }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for index, row in df1.iterrows() %}
+            <tr>
+              {% for value in row %}
+                <td>{{ value }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <hr class="vertical-line">
+      <table class="table">
+        <thead>
+          <tr>
+            {% for column in df2.columns %}
+              <th>{{ column }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for index, row in df2.iterrows() %}
+            <tr>
+              {% for value in row %}
+                <td>{{ value }}</td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
+

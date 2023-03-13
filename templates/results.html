@@ -1,0 +1,28 @@
+<table class="styled-table {{tablename}}">
+    <thead>
+        <tr>
+            <th style="width:20%">Name</th>
+            <th style="width:10%">Min Price</th>
+            <th style="width:10%">Max Price</th>
+            <th style="width:10%">Date</th>
+            <th style="width:10%">Time</th>
+            <th style="width:10%">Time Zone</th>
+            <th style="width:20%">Venue</th>
+            <th style="width:10%">Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in result %}
+        <tr class="active-row">
+            <td>{{ item['name'] }}</td>
+            <td>{{ item['minPrice'] }}</td>
+            <td>{{ item['maxPrice'] }}</td>
+            <td>{{ item['date'] }}</td>
+            <td>{{ item['time'] }}</td>
+            <td>{{ item['timeZone'] }}</td>
+            <td>{{ item['venue'] }}</td>
+            <td><a class="link" href="{{ item['url'] }}">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
