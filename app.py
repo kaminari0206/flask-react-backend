@@ -11,9 +11,9 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/")
-def index():
-    return render_template("search.html")
+# @app.route("/")
+# def index():
+#     return render_template("search.html")
 
 @app.route("/search")
 @cross_origin()
