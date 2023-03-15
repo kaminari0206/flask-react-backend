@@ -14,7 +14,6 @@ def get_data_frame_from_ticketmaster(keyword):
 
     
     df = pd.DataFrame(ticketmaster_data['_embedded']['events'])
-    print("$$df : ", df)
 
     for i in range(number_events):
 
@@ -24,6 +23,11 @@ def get_data_frame_from_ticketmaster(keyword):
             name = current_event['name']
         except:
             name = 'Not Found'
+
+        # try:
+        #     image = current_event['images'][0]['url']
+        # except:
+        #     image = 'Not Found'
     
         try:
             url = current_event['url']

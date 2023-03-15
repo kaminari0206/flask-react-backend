@@ -34,7 +34,6 @@ data = {
 
 
 def get_data_frame_from_stubhub(keyword):
-    # print("-------------------------------------------")
 
     number_events = 3
 
@@ -51,8 +50,6 @@ def get_data_frame_from_stubhub(keyword):
     stubhub_data = requests.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword={}&countryCode={}&apikey={}".format(keyword,'US',YOUR_TICKETMASTER_API_KEY)).json()
     ##print("XXXXXXXXXXXXXXXXXX" +str(stubhub_data.status))
     df = pd.DataFrame(ticketmaster_data['_embedded']['events'])
-    # print("---------------------------------------")
-    # print("df:", df)
 
     for i in range(number_events):
 
@@ -103,6 +100,8 @@ def get_data_frame_from_stubhub(keyword):
     d_final = pd.DataFrame(data)
 
     d_final.columns = ['name','url','date','time','timeZone','minPrice','maxPrice','venue']
+
+    data = {"d_final": d_final.to_dict(orient='records')}
 
     return d_final
         
