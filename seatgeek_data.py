@@ -18,16 +18,11 @@ def get_data_frame_from_seatgeek(keyword):
     for i in range(number_events):
 
         current_event = df.iloc[i]
-
+        
         try:
             name = current_event['title']
         except:
             name = 'Not Found'
-
-        # try:
-        #     image = current_event['performers'][0]['image']
-        # except:
-        #     image = 'Not Found'
     
         try:
             url = current_event['url']
@@ -64,10 +59,10 @@ def get_data_frame_from_seatgeek(keyword):
         except:
             venue = 'Not Found'
 
-        data.append((name,image,url,date,time,timeZone,minPrice,maxPrice,venue))
+        data.append((name,url,date,time,timeZone,minPrice,maxPrice,venue))
 
     d_final = pd.DataFrame(data)
-    d_final.columns = ['name','image','url','date','time','timeZone','minPrice','maxPrice','venue']
+    d_final.columns = ['name','url','date','time','timeZone','minPrice','maxPrice','venue']
 
     return d_final
         
