@@ -33,11 +33,17 @@ data = {
     "scope": "read:events"
 }
 
+def format_date(date_string):
+    dt_obj = datetime.fromisoformat(date_string[:19])
+    return dt_obj.strftime('%m-%d-%Y')
 
+def format_time(time_string):
+    dt_obj = datetime.strptime(time_string, '%H:%M:%S')
+    return dt_obj.strftime('%I:%M %p')
 
 def get_data_frame_from_stubhub(keyword):
 
-    number_events = 3
+    number_events = 6
 
     data = {
     "grant_type": "client_credentials",
@@ -72,7 +78,9 @@ def get_data_frame_from_stubhub(keyword):
 
     data = []
 
-    for i in range(number_events):
+    output_events = dmain.shape[0]
+
+    for i in range(min(number_events,output_events)):
 
         current_event = dmain.iloc[i]
 
@@ -124,5 +132,8 @@ def get_data_frame_from_stubhub(keyword):
     d_final = pd.DataFrame(data)
 
     d_final.columns = ['name','url','date','time','timeZone','minPrice','maxPrice','venue']
+
+    d_final['date'] = d_final['date'].apply(format_date)
+    d_final['time'] = d_final['time'].apply(format_time)
 
     return d_final

@@ -1,21 +1,30 @@
 import pandas as pd
 import requests
+from stubhub_data import format_date
+from datetime import  datetime
 
 YOUR_SEATGEEK_API_KEY = 'MzE3NTk2NDd8MTY3NTQ1NTk3My4xMDQzNjU2'
 
+
+def format_time(datetime_string):
+    dt_obj = datetime.strptime(datetime_string, '%Y-%m-%dT%H:%M:%S')
+    return dt_obj.strftime('%I:%M %p')
+
+
 def get_data_frame_from_seatgeek(keyword):
     
-    number_events = 3
+    number_events = 6
 
     data = []
-
-    #ticketmaster_data = requests.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword={}&countryCode={}&apikey={}".format(keyword,'US',YOUR_TICKETMASTER_API_KEY)).json()
 
     seatgeek_data = requests.get("https://api.seatgeek.com/2/events?q={}&client_id={}".format(keyword,YOUR_SEATGEEK_API_KEY)).json()
 
     df = pd.DataFrame(seatgeek_data['events'])
 
-    for i in range(number_events):
+    output_events = df.shape[0]
+
+
+    for i in range(min(number_events,output_events)):
 
         current_event = df.iloc[i]
         
@@ -64,7 +73,14 @@ def get_data_frame_from_seatgeek(keyword):
     d_final = pd.DataFrame(data)
     d_final.columns = ['name','url','date','time','timeZone','minPrice','maxPrice','venue']
 
+    d_final['date'] = d_final['date'].apply(format_date)
+    d_final['time'] = d_final['time'].apply(format_time)
+
+    d_final.fillna(value='Not Found', inplace=True)
+
+
     return d_final
         
+
 
 

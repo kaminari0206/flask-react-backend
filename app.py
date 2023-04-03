@@ -19,11 +19,14 @@ CORS(app)
 @cross_origin()
 def search():
     query = request.args.get("query")
-    
-    result_seatgeek = get_data_frame_from_seatgeek(query).to_dict(orient='records')
-    result_ticketmaster = get_data_frame_from_ticketmaster(query).to_dict(orient='records')
-    result_stubhub = get_data_frame_from_stubhub(query).to_dict(orient='records')
-    data = {'result_seatgeek': result_seatgeek, 'result_ticketmaster': result_ticketmaster, 'result_stubhub': result_stubhub}
+    startdate = request.args.get("startdate")
+    enddate = request.args.get("enddate")
+
+    # result_seatgeek = get_data_frame_from_seatgeek(query).to_dict(orient='records')
+    result_ticketmaster = get_data_frame_from_ticketmaster(query, startdate, enddate).to_dict(orient='records')
+    # result_stubhub = get_data_frame_from_stubhub(query).to_dict(orient='records')
+    # data = {'result_seatgeek': result_seatgeek, 'result_ticketmaster': result_ticketmaster, 'result_stubhub': result_stubhub}
+    data = {'result_ticketmaster': result_ticketmaster}
     
     return Response(dumps(data, default=str))
 
